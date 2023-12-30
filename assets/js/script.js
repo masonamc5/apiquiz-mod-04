@@ -1,37 +1,35 @@
 const startBtn = document.getElementById("start-btn");
-
 const questionConEl = document.getElementById("questionContainer");
 const questionElement = document.getElementById("question");
 const answerButtonsEl = document.getElementById("answer-btns");
-const modal = document.getElementById('modal')
+
+const modal = document.getElementById("modal");
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
 const scoreInput = document.getElementById("score");
-const modalSubmit = document.getElementById('submit')
+const modalSubmit = document.getElementById("submit");
+
 var timer;
-var timerEle = document.getElementById('timer')
+var timerEle = document.getElementById("timer");
 let sec = 60;
-
-
 
 let shuffledQuestions, currentQuestionIndex;
 
 startBtn.addEventListener("click", startGame);
 
 function startTime() {
-// console.log('hello')
+  // console.log('hello')
 
-timer = setInterval(() => {
-  timerEle.textContent = sec;
-  sec--;
+  timer = setInterval(() => {
+    timerEle.textContent = sec;
+    sec--;
 
-  if(sec < 0) {
-    clearInterval(timer);
-    endGame()
-    //add modal to enter name and save to local storage
-  }
-}, 1000)
- 
+    if (sec < 0) {
+      clearInterval(timer);
+      endGame();
+      //add modal to enter name and save to local storage
+    }
+  }, 1000);
 }
 
 function shuffle(array) {
@@ -46,7 +44,7 @@ function startGame() {
   questionConEl.classList.remove("hide");
   nextQuestion();
 
-  startTime()
+  startTime();
 }
 
 function nextQuestion() {
@@ -85,8 +83,9 @@ function chooseAnswer(isRight) {
       button.classList.add("right");
     } else {
       button.classList.add("wrong");
-    }if(!isRight) {
-      subtractTime()
+    }
+    if (!isRight) {
+      subtractTime();
     }
   });
 
@@ -107,7 +106,7 @@ function chooseAnswer(isRight) {
 }
 
 function subtractTime() {
-  sec -= 1
+  sec -= 1;
   if (sec < 0) {
     sec = 0;
   }
@@ -116,23 +115,20 @@ function subtractTime() {
 }
 
 function endGame() {
-    modal.style.display = 'block'
+  modal.style.display = "block";
 }
 
-modalSubmit.addEventListener('click' , function() {
-  store()
-})
-
-
-
+modalSubmit.addEventListener("click", function () {
+  store();
+});
 
 function store() {
   const userData = {
     name: nameInput.value,
     email: emailInput.value,
     score: scoreInput.value,
-  }
-    localStorage.setItem('userData', JSON.stringify(userData))
+  };
+  localStorage.setItem("userData", JSON.stringify(userData));
 }
 
 const questions = [
