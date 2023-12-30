@@ -4,6 +4,10 @@ const questionConEl = document.getElementById("questionContainer");
 const questionElement = document.getElementById("question");
 const answerButtonsEl = document.getElementById("answer-btns");
 const modal = document.getElementById('modal')
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const scoreInput = document.getElementById("score");
+const modalSubmit = document.getElementById('submit')
 var timer;
 var timerEle = document.getElementById('timer')
 let sec = 60;
@@ -81,6 +85,8 @@ function chooseAnswer(isRight) {
       button.classList.add("right");
     } else {
       button.classList.add("wrong");
+    }if(!isRight) {
+      subtractTime()
     }
   });
 
@@ -100,19 +106,33 @@ function chooseAnswer(isRight) {
   }, 1000);
 }
 
+function subtractTime() {
+  sec -= 1
+  if (sec < 0) {
+    sec = 0;
+  }
+
+  timerEle.textContent = sec;
+}
+
 function endGame() {
     modal.style.display = 'block'
-    store()
 }
-document.getElementById("name");
- document.getElementById("email");
- document.getElementById("score");
+
+modalSubmit.addEventListener('click' , function() {
+  store()
+})
+
+
+
 
 function store() {
-  localStorage.clear();
-  localStorage.setItem("name");
-  localStorage.setItem("email");
-  localStorage.setItem("score");
+  const userData = {
+    name: nameInput.value,
+    email: emailInput.value,
+    score: scoreInput.value,
+  }
+    localStorage.setItem('userData', JSON.stringify(userData))
 }
 
 const questions = [
