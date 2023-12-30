@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>JavaScript Quiz</title>
+
+</head>
+
+<body>
+    <h1>JavaScript Quiz</h1>
+
+    <div id="js-timer" class="js-timer">
+        <div id="timer">
+          60 
+        </div>
+    </div>
+
+    <div id="modal">
+        <h3 class="modal-h3">Please save your score and name.</h2>
+        <form>
+            <label for="Name">Name</label><br>
+            <input type="text" name="name" id="name" placeholder="Enter your name">
+            <br>
+            <label for="email">Email</label><br>
+            <input type="text" name="email" id="email" placeholder="Enter your email">
+            <br>
+            <label for="score">Score</label><br>
+            <input type="text" name="score" placeholder="Enter your score"><br><br>
+            <input type="submit" value="Submit" class="form-submit">
+
+        </form>
+    </div>
+
+    
+        <div class= "container">
+            <div id="questionContainer" class="hide">
+                <div id="question">Question</div>
+                <div id="answer-btns" class="btn-grid">
+                    <button class="btn">Answer 1</button>
+                    <button class="btn">Answer 2</button>
+                    <button class="btn">Answer 3</button>
+                    <button class="btn">Answer 4</button>
+                </div>
+            </div>
+
+            <div class="control-btns">
+                <button id="start-btn" class="start-btn btn ">Start</button>
+            </div>
+
+
+
+        </div>
+
+
+
+    </main>
+
+<script src="./assets/js/script.js"></script>
+
+</body>
+
+</html>
